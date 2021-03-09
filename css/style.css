@@ -1,3 +1,82 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Bad Script', cursive;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
+
+h2 {
+    font-size: 3em;
+}
+
+hr {
+    height: 7px;
+    background: linear-gradient(to right, #0320CE 0%, #09CACB 50%, #00AF33 100%);
+    width: 80%;
+}
+
+
+main, .aside {
+    background-color: rgba(255, 255, 255, 0.863);
+}
+
+.table{
+    width: 95%;
+    margin: auto;
+}
+
+.table th {
+    text-align: center;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+}
+}
+
+.aside {
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.aside ul {
+    list-style-type: none;
+}
+
+footer {
+    color: #fff;
+}
+
+.aside2 {
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.aside2 ul {
+    list-style-type: none;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+/* 
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+} */
