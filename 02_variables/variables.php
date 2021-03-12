@@ -25,34 +25,20 @@
 
     <div class="row">
 
-        <div class="col-sm-2 aside">
-          <!-- Exemple
-          <ul>
-            <li><a href="../00_pages/01-page.php">Page 1</a></li>
-            <li><a href="../00_pages/02-page.php">Page 2</a></li>
-            <li><a href="../00_pages/03-page.php">Page 3</a></li>
-            <li><a href="../00_pages/04-page.php">Page 4</a></li>
-          </ul>
-          Introduction
-          <ul class="navigation">
-            <li><a href="../01_intro/introduction.php" class="active">Introduction</a></li>
-            <li><a href="../01_intro/info.php">Page infos PHP</a></li>
-          </ul>
-          Variable
-          <ul class="navigation">
-              <li><a href="#">Variable</a></li>
-          </ul>
-           -->
            <?php
             require('../inc/sidenav.inc.php')
            ?>
-        </div>
 
         <!-- ============================================================== -->
         <!-- Contenu principal -->
         <!-- ============================================================== -->
         <div class="col-sm-8">
             <main class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
               <div class="row">
                 <hr>
                 <h2 class="col-sm-12 text-center" id="definition">1 - Définition</h2>
@@ -434,7 +420,7 @@
                               </td>
                             </tr>
                             <tr>
-                              <th scope="row">!= ou <></th>
+                              <th scope="row">!= ou &lt;></th>
                               <td>
                               Teste l'inégalité de deux valeurs.<br>
                               L'expression $a != $b vaut TRUE si la valeur de $a est différente de celle de $b et FALSE dans le cas contraire.
@@ -463,13 +449,13 @@
                               </td>
                             </tr>
                             <tr>
-                              <th scope="row"><</th>
+                              <th scope="row">&lt;</th>
                               <td>
                               Teste si le premier opérande est strictement inférieur au second.
                               </td>
                             </tr>
                             <tr>
-                              <th scope="row"><=</th>
+                              <th scope="row">&lt;=</th>
                               <td>
                               Teste si le premier opérande est inférieur ou égal au second.
                               </td>
@@ -487,9 +473,9 @@
                               </td>
                             </tr>
                             <tr>
-                              <th scope="row"><=></th>
+                              <th scope="row">&lt;=></th>
                               <td>
-                              Avec $a<=>$b, retourne -1, 0 ou 1 respectivement si $a<$b, $a=$b ou $a>$b ($a et $b peuvent être des chaînes).
+                              Avec $a=>$b, retourne -1, 0 ou 1 respectivement si $a<$b, $a=$b ou $a>$b ($a et $b peuvent être des chaînes).
                               </td>
                             </tr>
                             </tbody>
@@ -679,6 +665,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <script src="../inc/sidenav.js"></script>
    
   </body>
 </html>
