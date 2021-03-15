@@ -1,6 +1,6 @@
 <?php 
     require_once('../inc/functions.php');
-    $chaine = "Ma maie fait du vélo !";
+    $chaine = "Ma grand-mère fait du vélo !";
     $decimal = 18.74;
     $entier = 500;
 ?> 
@@ -38,185 +38,235 @@
         require('../inc/sidenav.inc.php');
         ?>
 
-    <!-- ============================================================== -->
-    <!-- Contenu principal -->
-    <!-- ============================================================== -->
-    <div class="col-sm-8">
-        <main class="container-fluid">
-        <!-- le bouton pour la nav  -->
-        <button type="button" id="sidebarCollapse" class="navbar-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-        </button>
+        <!-- ============================================================== -->
+        <!-- Contenu principal -->
+        <!-- ============================================================== -->
+        <div class="col-sm-8">
+            <main class="container-fluid">
+            <!-- le bouton pour la nav  -->
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            </button>
 
-        <div class="row">
-            <hr>
-            <h2 class="col-sm-12 text-center">1 - Mini exo 1</h2>
-        <div class="col-12">
-            <p>Le premier exo consiste à afficher le jour de la semaine :</p>
-            <?php 
-                quelJour();
-                //cette fonction permet d'analyser dans le navigateur le contenu et le type d'une variable
-                echo "<p class=\"alert alert-primary w-50 text-center mx-auto\"><strong>DU COURS :</strong> <br>";
-                var_dump('coucou');
-                echo "<br>";
-                var_dump($chaine);
-                echo "<br>";
-                var_dump($decimal);
-                echo "<br>";
-                var_dump($entier);
-                echo "<br>";
-                print_r("Affiche du contenu avec la fonction print_r");
-                echo "<br>";
-
-                //fonction gettype() = renvoie le type d'une variable
-                echo gettype($chaine); // renvoie string
-                echo "<br></p>";
-            ?> 
-
-        </div><!-- fin de la colonne -->
-        <hr>
-
-        <h2 class="col-sm-12 text-center">1 - Mini exo 2</h2>
-        <div class="col-12">
-            <p>Écrire la phrase suivante "La devise de la République est Liberté, Égalité, Fraternité" :</p>
-            <?php 
-                $lib = "Liberté";
-                $egal = "Égalité";
-                $frat = "Fraternité";
-
-                echo "<p class=\"alert alert-success w-50 mx-auto text-center\">La devise de la République Française est <br>\"$lib, $egal, $frat\".</p>"
-            ?> 
-        </div>
-        <hr>
-
-        <h2 class="col-sm-12 text-center">3 - Mini exo 3</h2>
-        <div class="col-12">
-            <p>Si le prix est supérieur à 100 euros a remise est de 10% sinon la remise est de 5%, et donnez le montant du prix net:</p>
-
-            <button value="Calculez votre discount" class="btn btn-success " type="button" name="supprimer" onclick="myFunction();">Cliquez ici pour calculer le prix de votre object</button>
-
-            <?php 
-                if(isset($_GET['prixObject'])){
-                    $prix = $_GET['prixObject'];
-                    $discount1 = 0.05;
-                    $discount2 = 0.1;
-                    $cinqpourcent = $prix * $discount1;
-                    $dixpourcent = $prix * $discount2;
-
-                    if ($prix>100) {
-                        echo "<p class=\"alert alert-success w-50 mx-auto text-center\">Vous avez une remise de $dixpourcent €.</p>";
-                    }else {
-                        echo "<p class=\"alert alert-success w-50 mx-auto text-center\">Vous avez une remise de $cinqpourcent €.</p>";
-                }}
-            ?>
-        </div>
-        <hr>
-
-        <h2 class="col-sm-12 text-center">4 - Mini exo 4</h2>
-        <div class="col-12">
-            <p>Si vous achetez un PC à plus de 1000 euros, la remise est de 15%. Pour un PC de 1000 euros et moins, la remise est de 10%, si c'est un livre, la remise est de 5%, pour tous les autres articles, la remise est de 2%.</p>
-            <div class="alert alert-success text-center w-75 mx-auto">
-
-            <form action="#" method="GET">
-                Objet acheté :<input type="text" name="achat" placeholder="PC, livre ou autre"/><br>
-                Prix :<input type="text" name="prixAchat" placeholder="En euros" style="margin-top:15px"/> <br>
-                <input type="submit" name="submit" style="margin-top:15px"/> 
-            </form>
-
-
-        <?php 
-            // Vérifier si le formulaire est soumis 
-            if (isset( $_GET['submit'] ) ) {
-                /* récupérer les données du formulaire en utilisant la valeur des attributs name comme clé */
-                $achat = $_GET['achat']; 
-                $prixAchat = $_GET['prixAchat']; 
-                // pour la remise le calcul suivant : on remplace 10 par le pourcentage que l'on veut obtenir 
-                //10%. 1-(10/100) = 0.9
-                $remise15 = $prixAchat*0.85;
-                $remise10 = $prixAchat*0.9;
-                $remise5 = $prixAchat*0.95;
-                $remise2 = $prixAchat*0.98;
-
-                if ($achat == 'PC'){
-                    if($prixAchat >= 1000){
-                        //remise de 15%
-                        echo "Vous avez acheté un PC à $prixAchat €, vous bénéficiez donc d'une remise de 15%. Vous paierez $remise15 €";
-                    }else {
-                        //remise de 10%
-                        echo "Vous avez acheté un PC à $prixAchat €, vous bénéficiez donc d'une remise de 10%. Vous paierez $remise10 €";
-                }}else if ($achat == 'livre'){
-                    //remise de 5%
-                    echo "Vous avez acheté un livre à $prixAchat €, vous bénéficiez donc d'une remise de 5%. Vous paierez $remise5 €";
-                }else {
-                    //remise de 2%
-                    echo "Vous avez acheté un.e $achat à $prixAchat €, vous bénéficiez donc d'une remise de 2%. Vous paierez $remise2 €";
-                }
-            }
-        ?> 
-            </div>
-        </div>
-        <hr>
-
-        <h2 class="col-sm-12 text-center">5 - Mini exo 5</h2>
-        <div class="col-12">
-            <?php 
-                $i = 0;
-                // boucle while : tant que i est inférieur à 25 on incrémente
-                while ($i < 25){
-                    echo "<p class=\"alert alert-success text-center w-75 mx-auto\">La variable i vaut $i, on incrémente : " . ++$i . "</p>";
-                }
-            ?> 
-        </div> <!-- fin de la colonne -->
-        <hr>
-
-        <h2 class="col-sm-12 text-center">6 - Mini exo 6</h2>
-        <div class="col-12">
-           <div class="alert alert-success text-center w-75 mx-auto">
-                <form action="#" method="GET"></form>
-                    <label for="annee">Année de naissance : </label>
-                    <select name="annee" id="annee">
+            <div class="row">
+                <hr>
+                <div class="col-sm-12 col-md-6">
+                <h2 class="text-center">1 - Mini exo 1</h2>
+                    <p>Le premier exo consiste à afficher le jour de la semaine. Ici, je le fais d'avord en français et ensuite en anglais.</p>
                     <?php 
-                        // dans une boucle, faire les options d'un élément select en démarrant à 1920 et en s'arrêtant à 2021
-                        $annee = 1920;
-                        while ($annee <= 2021) {
-                            echo "<option value =\"$annee\" name=\"choix\">" . $annee++ . "</option>";
+                        quelJour();
+                        // //cette fonction permet d'analyser dans le navigateur le contenu et le type d'une variable
+                        // echo "<p class=\"alert alert-primary w-50 text-center mx-auto\"><strong>DU COURS :</strong> <br>";
+                        // var_dump('coucou');
+                        // echo "<br>";
+                        // var_dump($chaine);
+                        // echo "<br>";
+                        // var_dump($decimal);
+                        // echo "<br>";
+                        // var_dump($entier);
+                        // echo "<br>";
+                        // print_r("Affiche du contenu avec la fonction print_r");
+                        // echo "<br>";
+
+                        // //fonction gettype() = renvoie le type d'une variable
+                        // echo gettype($chaine); // renvoie string
+                        // echo "<br></p>";
+                    ?> 
+
+                </div><!-- fin de la colonne -->
+                
+                <div class="col-sm-12 col-md-6">
+                <h2 class="text-center">2 - Mini exo 2</h2>
+                    <p>Écrire la phrase suivante "La devise de la République est Liberté, Égalité, Fraternité" :</p>
+                    <?php 
+                        $lib = "Liberté";
+                        $egal = "Égalité";
+                        $frat = "Fraternité";
+
+                        echo "<p class=\"alert alert-success w-50 mx-auto text-center\">La devise de la République Française est <br>\"$lib, $egal, $frat\".</p>"
+                    ?> 
+                </div> <!-- fin de la colonne -->
+                <hr>
+
+                <div class="col-sm-12 col-md-6">
+                <h2 class="text-center">3 - Mini exo 3</h2>
+                    <p>Si le prix est supérieur à 100 euros a remise est de 10% sinon la remise est de 5%, et donnez le montant du prix net:</p>
+                    
+                    <?php 
+                        include_once('../inc/form.php')
+                    ?> 
+
+                </div><!-- fin de la colonne -->
+
+                <div class="col-sm-12 col-md-6">
+                <h2 class="text-center">4 - Mini exo 4</h2>
+                    <p>Si vous achetez un PC à plus de 1000 euros, la remise est de 15%. Pour un PC de 1000 euros et moins, la remise est de 10%, si c'est un livre, la remise est de 5%, pour tous les autres articles, la remise est de 2%.</p>
+                    <div class="alert alert-success text-center w-75 mx-auto">
+
+                    <?php 
+                    include_once('../inc/form1.php')
+                    ?> 
+                    </div>
+                </div>
+                <hr>
+
+                <h2 class="col-sm-12 text-center">5 - Mini exo 5</h2>
+                <p>Ici, on veut faire une boucle à partir de la variable i. On veut qu'elle s'incrémente jusqu'à atteindre 25. Le faire avec une boucle <code>while</code> et l'initialisez à zéro. <code>while ($i < 25){echo ++$i;}</code>. Ici, la variable est pré incrémentée. </p>
+                <div class="col-12">
+                    <?php 
+                        $i = 0;
+                        // boucle while : tant que i est inférieur à 25 on incrémente
+                        while ($i < 25){
+                            echo "<p class=\"alert alert-success text-center w-75 mx-auto\">La variable i vaut $i, on incrémente : " . ++$i . "</p>";
                         }
                     ?> 
-                    </select>
-                </form>
-                <form action="#" method="GET">
-                    <label for="annee2">Année de naissance : </label>
-                    <select name="" id="">
-                    <?php 
-                        // dans une boucle, faire les options d'un élément select en démarrant à 1920 et en s'arrêtant à 2021
-                        $annee2 = 2021;
-                        while ($annee2 >= 1920) {
-                            echo "<option value =\"$annee2\" name=\"choix\">" . $annee2-- . "</option>";
-                        }
-                    ?> 
-                    </select>
-                </form>
-           </div>
-        </div> <!-- fin de la colonne -->
+                </div> <!-- fin de la colonne -->
+                <hr>
 
-        </div><!-- fin de la rangée -->
-        <hr>
-        <br><br><br><br><br><br><br><br><br><br><br><br>
+                <div class="col-sm-12 col-md-6">
+                <h2 class="text-center">6 - Mini exo 6</h2>
+                <p>Fabriquez deux select. Dans le premier, avec un code <code>while</code> faire des options allant de l'année 1920 à 2021. Puis faire la m^meme chose mais en partant de 2021 et en descendant jusqu'à 1920. </p>
+                <div class="alert alert-success text-center w-75 mx-auto">
+                        <form action="#" method="GET"></form>
+                            <label for="annee">Année de naissance : </label>
+                            <select name="annee" id="annee">
+                            <?php 
+                                // dans une boucle, faire les options d'un élément select en démarrant à 1920 et en s'arrêtant à 2021
+                                $annee = 1920;
+                                while ($annee <= 2021) {
+                                    echo "<option value =\"$annee\" name=\"choix\">" . $annee++ . "</option>";
+                                }
+                            ?> 
+                            </select>
+                        </form>
+                        <form action="#" method="GET">
+                            <label for="annee2">Année de naissance : </label>
+                            <select name="" id="">
+                            <?php 
+                                // dans une boucle, faire les options d'un élément select en démarrant à 1920 et en s'arrêtant à 2021
+                                $annee2 = 2021;
+                                while ($annee2 >= 1920) {
+                                    echo "<option value =\"$annee2\" name=\"choix\">" . $annee2-- . "</option>";
+                                }
+                            ?> 
+                            </select>
+                        </form>
+                </div>
+                </div> <!-- fin de la colonne -->
 
-    </main>
-    </div> <!-- fin de la partie principale, col-8 -->
+                <div class="col-sm-12 col-md-6">
+                    <h2 class="col-sm-12 text-center">7 - Mini exo 7</h2>
+                    <p></p>
+                        <?php 
+                            $chamalow = 0;
+                            do {
+                                echo "<p class=\"alert alert-success text-center w-75 mx-auto\">$chamalow - J'aime le chamalow !</p>";
+                                $chamalow++;
+                            } while( $chamalow > 10) // la condition renvoie FALSE mais le code s'est déjà exécuté une fois > = supérieur
+                        ?> 
+                </div> <!-- fin de la colonne -->
+                <hr>
 
-    <div class="col-sm-2 aside">
-    <ul>
-    <li><a href="#definition">Définition</a></li>
-    <li><a href="#affectation">Affectation de variables</a></li>
-    <li><a href="#variablesPredefinies">Les variables prédéfinies</a></li>
-    <li></li>
-    </ul>
-    </div>
-    </div>
+                <div class="col-sm-12 col-md-6">
+                <h2 class="text-center">8 - Mini exo 8</h2>
+                    <p>Avec Switch : si la variable contient espagnol, vous dite "hola", si anglais "hello", si francais "coucou" !</p>
+                    <div class="alert alert-success text-center w-75 mx-auto">
+                        <form action="#" method="POST">
+                            <label for="langue">Quelle langue parlez-vous ?</label>
+                            <input type="text" name="langue">
+                            <input type="submit" name="submit">
+                        </form>
+                        <?php 
+                            if (isset( $_POST['submit'] ) ) {
+                                /* récupérer les données du formulaire en utilisant la valeur des attributs name comme clé */
+                                $langue = $_POST['langue']; 
+                                // switch ($langue){
+                                //     case "anglais":
+                                //         echo "Hello !";
+                                //         break;
+                                //     case "français":
+                                //         echo "Coucou !";
+                                //         break;
+                                //     case "allemand":
+                                //         echo "Guten Tag !";
+                                //         break;
+                                //     case "espagnol":
+                                //         echo "Holà !";
+                                //         break;
+                                //     default:
+                                //         echo "Désolée je ne parle pas $langue !";
+                                //         break;
+                                // }
+                                if($langue == 'anglais') {
+                                    echo "Hello !";
+                                } else if ($langue == 'français') {
+                                    echo "Coucou !";
+                                } else if ($langue == 'allemand') {
+                                    echo "Guten Tag !";
+                                }else if ($langue == 'espagnol') {
+                                    echo "Holà !";
+                                }else if ($langue == 'chinois') {
+                                    echo "你好 !";
+                                }else if($langue == 'japonais') {
+                                    echo "こんにちは !";
+                                }else {
+                                    echo "Désolée je ne parle pas $langue !";
+                                }
+                            }
+                        ?> 
+                    </div>
+                </div> <!-- fin de la colonne -->
+
+                <div class="col-sm-12 col-md-6">
+                    <h2 class="text-center">9 - Mini exo 9</h2>
+                    <p>Afficher les mois de 1 à 12 à l'aide d'une boucle for dans un menu déroulant :</p>
+                    <div class="alert alert-success text-center w-75 mx-auto">
+                        <select name="mois" id="mois">
+                            <?php 
+                                for ($i = 1; $i <=12; $i++) {
+                                    echo "<option value=\"\">".$i."</option>";
+                                }  
+                            ?> 
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <h2 class="text-center">10 - Mini exo 10</h2>
+                    <p>Faire une boucle for qui adffiche de 0 à 9 sur la même ligne, complétez cette boucle pour mettre ces chiffres dans un tableau HTML.</p>
+                    <div class="alert alert-success text-center w-75 mx-auto">
+                       <table class="table table-striped">
+                           <tr>
+                                <?php 
+                                    for ($i = 0; $i <= 9; $i++) {
+                                        echo "<td>" . $i . "</td>";
+                                    }
+                                ?> 
+                           </tr>
+                       </table>
+                    </div>
+                </div>
+
+
+
+                </div><!-- fin de la rangée -->
+                <hr>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+
+            </main>
+        </div> <!-- fin de la partie principale, col-8 -->
+
+        <div class="col-sm-2 aside">
+            <ul>
+                <li><a href="#definition">Définition</a></li>
+                <li><a href="#affectation">Affectation de variables</a></li>
+                <li><a href="#variablesPredefinies">Les variables prédéfinies</a></li>
+                <li></li>
+            </ul>
+        </div> <!-- fin de la colonne 2 -->
+    </div> <!-- fin de la rangée -->
 
     <?php
         require("../inc/footer.inc.php")

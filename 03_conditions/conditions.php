@@ -20,7 +20,8 @@
 <body class="bg-dark">
     <!-- JUMBOTRON -->
     <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours PHP7 - Premier exercice</h1>
+        <h1 class="display-3">Cours PHP7 - Les conditions</h1>
+        <hr>
         <p class="lead">On retrouve dans PHP la plupart des instructions de contrôle des scripts. Indispensables à la gestion du déroulement d'un algorithme quelconque, ces instructions sont présentes dans tous les langages. PHP utilise une syntaxe très proche de celle du langage C. Ceux qui ont déjà pratiqué un langage tel que le C ou plus simplement JavaScript seront en pays de connaissance.</p>
     </div>
 
@@ -101,7 +102,7 @@
                             echo "</p>";
                         ?> 
                     </div><!-- fin de la colonne -->
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 col-md-6">
                         <h3 class="text-center" id="ternaire">4 - La méthode ternaire</h3>
                         <p>Il existe d'autres façons d'écrire un if else : la méthode ternaire. Avec cette méthode, le code sera le suivant : <code>(condition) ? code a exécuter si la condition retourne TRUE : code à retourner si le code renvoie FALSE;</code></p>
                         <?php 
@@ -110,7 +111,32 @@
                             echo ($h == 10) ?"<p class=\"alert alert-success w-75 mx-auto text-center\">\$h est égal à 10.</p>" : "<p class=\"alert alert-success w-75 mx-auto text-center\">\$h est différent de 10</p>";
                         ?> 
                     </div><!-- fin de la colonne -->
+
+                    <div class="col-sm-12 col-md-6">
+                        <h3 class="text-center" id="switch">5 - Switch et case</h3>
+                        <p>Switch permet de comparer à une multitude de valeurs, comme l'instruction <code>if.. else if... else if... else</code>. </p>
+                        <?php 
+                             echo "<p class=\"alert alert-success w-75 mx-auto text-center\">";
+                            $dept = 100;
+                            switch ($dept) {
+                                case 75: 
+                                    echo "Paris";
+                                    break;
+                                case 41:
+                                    echo "Loir-et-Cher";
+                                    break;
+                                case 92:
+                                    echo "Hauts-de-Seine";
+                                    break;
+                                default:
+                                    echo "Département inconnu !";
+                                    break;
+                            }
+                            echo "</p>";
+                        ?> 
+                    </div><!-- fin de la colonne -->
                 </div><!-- fin de la rangée -->
+                <hr>
 
                 <div class="row">
                     <div class="col-sm-12">
@@ -119,21 +145,77 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6">
-                        <h3 class="text-center">1 - La boucle while</h3>
-                        <p>La boucle while permet d'affiner le comportement d'une boucle en réalisant une action de manière répétitive tant qu'une condition est vérifiée ou qu'une expression quelconque est évaluée à TRUE et donc de l'arrêter quand elle n'est plus vérifiée, évaluée à FALSE.</p>
+                        <h3 class="text-center">1 - Boucle while</h3>
+                        <p>La boucle <code>while</code> permet d'affiner le comportement d'une boucle en réalisant une action de manière répétitive tant qu'une condition est vérifiée ou qu'une expression quelconque est évaluée à TRUE et donc de l'arrêter quand elle n'est plus vérifiée, évaluée à FALSE.</p>
+                        <div class="alert alert-success w-75 mx-auto text-center">
                         <?php 
                             $n = 1;
-                            while ($n%7 != 0) { // ici, on cherche un modulo différent de 0 pour toruver un nombre qui n'est pas un multiple de 7
+                            while ($n%7 != 0) { // le cript continue jusqu'à trouver un multiple de 7
                                 $n = rand(1,100); // rand fait un tirage de nombres aléatoires compris entre 1 et 100 rand() pour random
-                                echo $n . "&nbsp; - ";
+                                echo $n . "&nbsp; - "; 
                             }
                         ?> 
+                        </div>
                     </div> <!-- fin de la colonne -->
 
                     <div class="col-sm-12 col-md-6">
-
+                        <h3 class="text-center" id="dowhile">2 - Boucle do... while</h3>
+                        <p>Avec l'unstruction <code>do ... while</code>, la condition n'est évaluée qu'après une première exécution des instructions du bloc compris entre do et while. </p>
+                        <div class="alert alert-success w-75 mx-auto text-center">
+                        <?php 
+                            $n2 = 1;
+                            do { 
+                                $n2 = rand(1,100); // ici on cherche un nombre aléatoire sans savoir la condition 
+                                echo $n2 . "&nbsp; * ";
+                            } while ($n2%7 != 0); // le script s'arrête quand il trouve un multiple de 7 
+                        ?> 
+                        </div>
                     </div> <!-- fin de la colonne -->
-                </div>
+                    <div class="col-sm-12 col-md-6">
+                        <h3 class="text-center">3 - Boucle for</h3>
+                        <p>La boucle <code>for</code> est plus concise, ramassée que la boucle <code>while</code>. Elle s'écrit ainsi : <code>for(iniatialisation; condition; incrémentation){ code à exécuter }</code></p>
+                        <div class="alert alert-success w-75 mx-auto text-center">
+                        <?php 
+                            //on va afficher les puissances de 2 jusqu'à 8
+                            for ($i = 0; $i <= 8; $i++) {
+                                $tab[$i] = pow(2,$i); // à l'aide d'une boucle et de la fonction pow()
+                            } // création d'un tableau avec 9 éléments
+                            var_dump($tab);
+                        ?> 
+                        </div>
+                    </div> <!-- fin de la colonne -->
+
+                    <div class="col-sm-12 col-md-6">
+                        <h3 class="text-center">4 - Boucle foreach</h3>
+                        <p>La boucle <code>foreach</code> (pour chaque passage), est efficace pour afficher et lister les éléments contenus dans un tableau. </p>
+                        <div class="alert alert-success w-75 mx-auto text-center">
+                        <?php 
+                            $val = "Une valeur";
+                            echo "Les puissances de 2 sont : ";
+                            foreach ($tab as $val) { // on passe dans $val le contenu de chacun des éléments du tableau
+                                echo $val . " - ";
+                            }
+                        ?> 
+                        </div>
+                    </div> <!-- fin de la colonne -->
+
+                    <div class="col-sm-12">
+                        <p class="alert alert-success w-50 mx-auto text-center">Lecture des indices et des valeurs d'un tableau :<br>
+                        <?php 
+                            // crétion d'un autre tableau avec une boucle for
+                            for ($i = 0; $i <= 8; $i++) {
+                                $tableau[$i] = pow(2,$i); 
+                            } 
+                            // lecture des indices et des valeurs du tableau
+                            foreach ($tableau as $ind=>$valeur) { //récupère indice et valeur
+                                echo "2 puissance $ind vaut $valeur <br>";
+                            }
+                            echo "Le dernier indice est $ind et la dernière valeur est $valeur.";
+                        ?> 
+                        </p>
+                    </div><!-- fin de la colonne -->
+                    
+                </div><!-- fin de la rangée -->
 
                 <hr>
                 <br><br>
@@ -145,12 +227,14 @@
             <ul>
                 <!-- DES ANCRES POUR LE COURS ET LES EXOS -->
                 <li><a href="#conditions">Les conditions</a>
-                <ul>
-                    <li><a href="#if">If</a></li>
-                    <li><a href="#ifElse">If... Else</a></li>
-                    <li><a href="#ifElseIf">If... Else if... Else</a></li>
-                    <li><a href="#ternaire">La méthode ternaire</a></li></li>
-                </ul>
+                    <ul>
+                        <li><a href="#if">If</a></li>
+                        <li><a href="#ifElse">If... Else</a></li>
+                        <li><a href="#ifElseIf">If... Else if... Else</a></li>
+                        <li><a href="#ternaire">La méthode ternaire</a></li>
+                        <li><a href="#switch">Switch</a></li>
+                    </ul>
+                </li>
                 <li><a href="#while">Les boucles</a></li>
             </ul>
         </div>
@@ -158,7 +242,7 @@
 
     <!-- LE FOOTER EN REQUIRE -->
     <?php
-    require("../inc/footer.inc.php")
+        require("../inc/footer.inc.php")
     ?>
 
     <!-- Optional JavaScript -->

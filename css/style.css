@@ -12,6 +12,7 @@ hr {
     height: 7px;
     background: linear-gradient(to right, #0320CE 0%, #09CACB 50%, #00AF33 100%);
     width: 80%;
+    border-radius: 50%;
 }
 
 
