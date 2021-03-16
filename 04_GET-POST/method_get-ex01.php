@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
 
-    <title>Cours PHP7 -La méthode GET</title>
+    <title>Cours PHP7 - Exos pratiques - 1</title>
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/style.css">
@@ -21,15 +21,15 @@
 <body class="bg-dark">
     <!-- JUMBOTRON -->
     <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours PHP7 - La méthode GET</h1>
-        <p class="lead">$_GET[] réprésente le sodnnées qui transitent par l'URL</p>
+        <h1 class="display-3">Cours PHP7 - Premier exercice</h1>
+        <p class="lead">Première page d'exercice pour le PHP</p>
     </div>
 
     <!-- RANGÉE PRINCIPALE -->
     <div class="row">
         <!-- LA NAVIGATION EN INCLUDE (penser à ajouter le JS qui va avec en fin de page) -->
         <?php
-            require('../inc/sidenav.inc.php')
+        require('../inc/sidenav.inc.php')
         ?>
 
         <!-- ============================================================== -->
@@ -46,26 +46,31 @@
 
                 <div class="row">
                     <hr>
-                    <h2 class="col-sm-12 text-center" id="definition">1 - Introduction</h2>
-                    <div class="col-sm-12 col-md-6">
-                        <p>Il s'agit d'une super globale et comme toutes les supers globales, c'est un tableau. Superglobale signifie que cette variable est disponible partout dans le script, y compris au sein des fonctions. Les informations trnasitent dans l'url selon la syntaxe suivante : <code>mapage.php?indice1=valeur1&indiceN=valeurN</code>.</p>
-                        <p>Quand on récupère les données, $_GET fabrique un tableau et se remplit selon le schéma suivant : <code>$_GET = array('indice1' => 'valeur1','indiceN' => 'valeurN');</code></p>
-                    </div><!-- fin de la colonne -->
-                    <div class="col-sm-12 col-md-6 text-center">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-4">
-                                <a href="method_get-ex01.php?article=Jean&couleur=bleu&prix=55">
-                                <img src="../img/jean.jpg" alt="" class="img-fluid">Jean bleu</a>
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <a href="method_get-ex01.php?article=Robe&couleur=rouge&prix=75">
-                                <img src="../img/robe.jpg" alt="" class="img-fluid">Robe rouge</a>
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <a href="method_get-ex01.php?article=Pull&couleur=blanc&prix=45">
-                                <img src="../img/pull.jpg" alt="" class="img-fluid">Pull blanc</a>
-                            </div>
-                        </div>
+                    <h2 class="col-sm-12 text-center" id="definition">1 - Tableau créé par la variable $_GET[]</h2>
+                    <div class="col-12">
+                        <?php 
+                            // jevar_dump($_GET);
+                            if(isset($_GET['article']) && isset($_GET['couleur']) && isset($_GET['prix'])){
+                                // echo "<p>" . $_GET['article']. " - " . $_GET['couleur']. " <br> " . $_GET['prix'] . "€</p>";
+                                echo "
+                                <div class=\"card text-center\">
+                                <div class=\"card-header\">
+                                    À la Une !
+                                </div>
+                                <div class=\"card-body\">
+                                    <h3 class=\"card-title\">" . $_GET['article'].  " " . $_GET['couleur']. "</h3>
+                                    <p class=\"card-text\">Découvrez nos vêtements de qualité en matière 100% naturelle et recyclables. Des questions ? N'hésitez pas à nous contacter, nous sommes disponibles 7j/7 et 24h/24.</p>
+                                    <a href=\"#\" class=\"btn btn-primary\">Ajoutez au panier</a>
+                                </div>
+                                <div class=\"card-footer text-muted\">
+                                " . $_GET['prix']. " €
+                                </div>
+                                </div>";
+
+                            } else {
+                                echo "<p class=\"alert alert-danger w-50 mx-auto text-center\">Désolé, il n'y a pas de produit sur cette page</p>";
+                            }
+                        ?> 
                     </div><!-- fin de la colonne -->
                 </div><!-- fin de la rangée -->
 
@@ -81,14 +86,14 @@
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
+                <li></li>
             </ul>
         </div>
     </div>
 
     <!-- LE FOOTER EN REQUIRE -->
     <?php
-        require("../inc/footer.inc.php")
+    require("../inc/footer.inc.php")
     ?>
 
     <!-- Optional JavaScript -->
