@@ -1,5 +1,7 @@
 <?php 
     require_once('../inc/functions.php');
+    session_start();
+    jeprint_r($_SESSION);
 ?> 
 <!doctype html>
 <html lang="fr">
@@ -15,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
 
-    <title>Cours PHP7 - Exos pratiques - 1</title>
+    <title>Cours PHP7 - $_SESSION</title>
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/style.css">
@@ -23,7 +25,7 @@
 <body class="bg-dark">
     <!-- JUMBOTRON -->
     <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours PHP7 - La méthode POST</h1>
+        <h1 class="display-3">Cours PHP7 - la variable $_SESSION</h1>
         <p class="lead">La méthode POST réceptionne les données d'un formulaire, $_POST est une superglobale.</p>
     </div>
 
@@ -50,46 +52,7 @@
                     <hr>
                     <h2 class="col-sm-12 text-center" id="definition">1 - Introduction</h2>
                     <div class="col-sm-12">
-                    <!-- EXO faire un formulaire avec les champs prénom, nom, email, adresse, code postal et ville -->
-                    <!-- puis récupérer dans une page php 03-form-traitement.php les informations de $_POST -->
-                    <!-- puis on fabriquera ensemble un fichier .txt pour stocker les infos du formulaire -->
-    ​
-                        <form action="method_form_traitement.php" method="POST">
-        ​
-                            <div class="form-group">
-                                <label for="prenom">Prénom</label>
-                                <input type="text" class="form-control" id="prenom" name="prenom" required>
-                            </div><!-- fin champs prénom -->
-        ​
-                            <div class="form-group">
-                                <label for="">Nom</label>
-                                <input type="text" class="form-control" id="nom" name="nom" required>
-                            </div><!-- fin champs nom -->
-        ​
-                            <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div><!-- fin champs email -->
-        ​
-                            <div class="form-group">
-                                <label for="">Adresse</label>
-                                <input type="text" class="form-control" id="adresse" name="adresse" required>
-                            </div><!-- fin champs adresse -->
-        ​
-                            <div class="form-group">
-                                <label for="code_postal">Code postal</label>
-                                <input type="number" class="form-control" id="code_postal" name="code_postal" min="01000" max="99999" required>
-                            </div><!-- fin champs code postal -->
-        ​
-                            <div class="form-group">
-                                <label for="ville">Ville</label>
-                                <input type="text" class="form-control" id="ville" name="ville" required>
-                            </div><!-- fin champs ville -->
-        ​
-                            <button type="submit" class="btn btn-small btn-info">Envoyer</button>
-        ​
-                        </form><!-- fin du formulaire -->
-
+                        <p>Les données du fichier de session sont accessibles et manipulables à partir de la superglobale $_SESSION </p>
                     </div><!-- fin de la colonne -->
 
                 </div><!-- fin de la rangée -->

@@ -1,5 +1,7 @@
 <?php 
     require_once('../inc/functions.php');
+    //vérification de ce que je récupère en $_GET 
+    // jevar_dump($_GET);
 ?> 
 <!doctype html>
 <html lang="fr">
@@ -23,15 +25,15 @@
 <body class="bg-dark">
     <!-- JUMBOTRON -->
     <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours PHP7 - La méthode POST</h1>
-        <p class="lead">La méthode POST réceptionne les données d'un formulaire, $_POST est une superglobale.</p>
+        <h1 class="display-3">Cours PHP7 - Exo 4 avec $_GET</h1>
+        <p class="lead"></p>
     </div>
 
     <!-- RANGÉE PRINCIPALE -->
     <div class="row">
         <!-- LA NAVIGATION EN INCLUDE (penser à ajouter le JS qui va avec en fin de page) -->
         <?php
-        require('../inc/sidenav.inc.php')
+            require('../inc/sidenav.inc.php')
         ?>
 
         <!-- ============================================================== -->
@@ -41,55 +43,37 @@
             <main class="container-fluid">
                 <!-- BOUTON DE LA NAV -->
                 <button type="button" id="sidebarCollapse" class="navbar-btn">
-                <span></span>
-                <span></span>
-                <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
 
                 <div class="row">
                     <hr>
-                    <h2 class="col-sm-12 text-center" id="definition">1 - Introduction</h2>
+                    <h2 class="col-sm-12 text-center" id="definition">Votre compte : mise à jour ou suppression</h2>
+                    <!-- MINI exo -->
+                    <!-- 1/ affichez dans cette page un titre "Mon compte : un nom et un prénom"-->
+                    <!-- 2/ vous y ajouter un lien "modifier mon compte" : Ce lien renvoie dans l'url à la même page, donc à cette page, l'action demandé est "modification", quand on clique sur le lien -->
+                    <!-- 3/ Si vous avez reçu cette action "modification" par l'url, alors vous affichez "Vous avez demandé la modification de votre compte" -->
+                    
                     <div class="col-sm-12">
-                    <!-- EXO faire un formulaire avec les champs prénom, nom, email, adresse, code postal et ville -->
-                    <!-- puis récupérer dans une page php 03-form-traitement.php les informations de $_POST -->
-                    <!-- puis on fabriquera ensemble un fichier .txt pour stocker les infos du formulaire -->
-    ​
-                        <form action="method_form_traitement.php" method="POST">
-        ​
-                            <div class="form-group">
-                                <label for="prenom">Prénom</label>
-                                <input type="text" class="form-control" id="prenom" name="prenom" required>
-                            </div><!-- fin champs prénom -->
-        ​
-                            <div class="form-group">
-                                <label for="">Nom</label>
-                                <input type="text" class="form-control" id="nom" name="nom" required>
-                            </div><!-- fin champs nom -->
-        ​
-                            <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div><!-- fin champs email -->
-        ​
-                            <div class="form-group">
-                                <label for="">Adresse</label>
-                                <input type="text" class="form-control" id="adresse" name="adresse" required>
-                            </div><!-- fin champs adresse -->
-        ​
-                            <div class="form-group">
-                                <label for="code_postal">Code postal</label>
-                                <input type="number" class="form-control" id="code_postal" name="code_postal" min="01000" max="99999" required>
-                            </div><!-- fin champs code postal -->
-        ​
-                            <div class="form-group">
-                                <label for="ville">Ville</label>
-                                <input type="text" class="form-control" id="ville" name="ville" required>
-                            </div><!-- fin champs ville -->
-        ​
-                            <button type="submit" class="btn btn-small btn-info">Envoyer</button>
-        ​
-                        </form><!-- fin du formulaire -->
-
+                        <h3>Mon compte : Justine Périnel</h3>
+                    </div><!-- fin de la colonne -->
+                    <div class="col-sm-12">
+                        <?php 
+                            if(isset($_GET['action']) && $_GET['action'] == 'modification') {
+                                echo "<p class=\"alert alert-warning\">Vous avez demandé la modification de votre compte.</p>";
+                            }
+                            if(isset($_GET['action']) && $_GET['action'] == 'suppression') {
+                                echo "<p class=\"alert alert-danger\">Vous avez demandé la suppression de votre compte.</p>";
+                            } 
+                        ?>
+                        <a href="04-get.php?action=modification">Modifier mon compte</a>
+                        <a href="04-get.php?action=suppression">Supprimer mon compte</a>
+                         
+                    </div><!-- fin de la colonne -->
+                    <div class="col-sm-12">
+                        <p></p>
                     </div><!-- fin de la colonne -->
 
                 </div><!-- fin de la rangée -->

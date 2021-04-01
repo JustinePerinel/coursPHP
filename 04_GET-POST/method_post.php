@@ -1,3 +1,6 @@
+<?php 
+    require_once('../inc/functions.php');
+?> 
 <!doctype html>
 <html lang="fr">
 <head>
@@ -20,8 +23,8 @@
 <body class="bg-dark">
     <!-- JUMBOTRON -->
     <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours PHP7 - Premier exercice</h1>
-        <p class="lead">Première page d'exercice pour le PHP</p>
+        <h1 class="display-3">Cours PHP7 - La méthode POST</h1>
+        <p class="lead">La méthode POST réceptionne les données d'un formulaire, $_POST est une superglobale.</p>
     </div>
 
     <!-- RANGÉE PRINCIPALE -->
@@ -45,10 +48,67 @@
 
                 <div class="row">
                     <hr>
-                    <h2 class="col-sm-12 text-center" id="definition">1 - HOLA</h2>
-                    <div class="col-12">
+                    <div class="col-sm-12 col-md-6">
+                        <h2 class="col-sm-12 text-center" id="definition">I. Formulaire</h2>
+                        <ul>
+                            <li>Un formulaire doit toujours être dans une balise <code>&#8249;form></code> pour fonctionner.</li>
+                            <li>L'attribut method indique comment les données vont circuler vers le PHP.</li>
+                            <li>L'attribut action indique l'URL de destination des données (si l'attribut action est vide, les données vont vers le même script ou la même page).</li>
+                            <li>Ensuite sur les names il ne faut pas les oublier sur les formulaires ; ils constituent les indices de $_POST qui réceptionne les données.</li>
+                        </ul>
 
-                    </div><!-- fin de la colonne -->
+                        <form action="" method="POST" class="w-75 mx-auto">
+
+                            <div class="form-group">
+                                <label for="prenom">Prénom</label>
+                                <input type="text" class="form-control" id="prenom" name="prenom" required>
+                            </div><!-- fin champs prénom -->
+
+                            <div class="form-group">
+                                <label for="">Nom</label>
+                                <input type="text" class="form-control" id="nom" name="nom" required>
+                            </div><!-- fin champs nom -->
+
+                            <div class="form-group">
+                                <label for="">Votre commentaire</label>
+                                <textarea class="form-control" id="commentaire" rows="2" name="commentaire" required></textarea>
+                            </div><!-- fin champs commentaire -->
+
+                            <button type="submit" class="btn btn-small btn-info">Envoyer</button>
+
+                        </form><!-- fin du formulaire -->
+                        
+                    </div><!-- fin col -->
+
+                    <div class="col-sm-12 col-md-6">
+                        <h2><span>II.</span> Récupération des données</h2>
+
+                        <ul>
+                            <li>$_POST est une superglobale qui permet de récupérer les données saisirs dans un formulaire,</li>
+                            <li>$_POST est donc un tableau (array) et il est disponible dans tous les contextes du script,</li>
+                            <li>Le tableau $_POST se remplit de la manière suivante :
+                                <code>
+                                    $_POST = array(<br>
+                                    'name1' => 'valeur1',<br>
+                                    'nameN' => 'valeurN',<br>
+                                    );
+                                </code>
+                            </li>
+                            <li>Donc ou name1 et nameN correspondent aux attributs "name" du formulaire, et où valeur1 et valeurN correspondent aux valeurs saisies par l'internaute.</li>
+                        </ul>
+                        
+                        <?php 
+                            if (!empty($_POST)) {// si $_POST n'est pas vide, c'est qu'il est rempli et donc que le formulaire a été envoyé, notez qu'en l'état on peut l'envoyer avec des champs vides, les valeurs des $_POST étant alors des strings vides. En effet on peut avoir des informations non obligatoires dans un formulaire et les input ne seront pas remplis.
+                                // jeVarDump($_POST);
+
+                                echo "<div class=\"alert alert-success w-50 mx-auto\"><p>Prénom : " .$_POST['prenom']. "</p>";
+                                echo "<p>Nom : " .$_POST['nom']. "</p>";
+                                echo "<p>Commentaire : " .$_POST['commentaire']. "</p></div>";
+                                
+                            }
+                        ?> 
+                    </div><!-- fin col -->
+
                 </div><!-- fin de la rangée -->
 
                 <hr>
@@ -70,7 +130,7 @@
 
     <!-- LE FOOTER EN REQUIRE -->
     <?php
-    require("../inc/footer.inc.php")
+        require("../inc/footer.inc.php")
     ?>
 
     <!-- Optional JavaScript -->
