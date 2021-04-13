@@ -50,10 +50,7 @@
 
                     echo "</table>";
 
-                    $a =' coucou';
-                    $b = TRUE;
 
-                    
                 ?>
             </div>
         </div>  <!-- fin de la rangée -->
